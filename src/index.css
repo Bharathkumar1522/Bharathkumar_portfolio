@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#e8ecf1] text-gray-500 font-sans overflow-x-hidden transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-900 transition-colors duration-300;
+  }
+
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-gray-100;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 md:py-28 lg:py-32;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:scale-105 transform transition-all duration-300 text-sm sm:text-base;
+    box-shadow: 0 10px 30px rgba(255, 1, 79, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 15px 40px rgba(255, 1, 79, 0.4);
+  }
+
+  .card {
+    border-radius: 20px;
+    transition-property: transform, box-shadow, background-color;
+    @apply bg-[#e8ecf1] p-5 sm:p-6 md:p-8 duration-300 ease-in-out shadow-card;
+  }
+
+  .dark .card {
+    @apply bg-dark-card shadow-dark-card;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover transform -translate-y-[5px];
+  }
+
+  .dark .card:hover {
+    @apply shadow-dark-neumorphism;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8ecf1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff014f, #ff4d00);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e00145, #e04400);
+}
+
+/* Shimmer animation for progress bars */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid #ff014f;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Responsive touch targets */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  }
+}
