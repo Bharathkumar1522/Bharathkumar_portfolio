@@ -15,113 +15,113 @@ export const portfolioData = {
         },
         bestSkillOn: [
             { icon: "react", name: "ReactJS" },
-            { icon: "node", name: "NodeJS" },
+            { icon: "python", name: "Python" },
             { icon: "figma", name: "Figma" }
         ]
     },
 
     services: [
         {
+            id: 0,
+            icon: "globe",
+            title: "Web Development",
+            description: "End-to-end web solution development. From initial concept and design to final deployment, ensuring scalable, secure, and high-performance websites."
+        },
+        {
             id: 1,
-            icon: "monitor",
-            title: "Frontend Development",
-            description: "Crafting engaging user interfaces with React.JS, TailwindCSS, GSAP, Framer Motion. Experienced in building responsive modern web applications."
+            icon: "layout",
+            title: "Frontend Landing Pages",
+            description: "Building high-converting, responsive landing pages with React.js, Tailwind CSS, and Framer Motion. Focused on performance, aesthetics, and user engagement."
         },
         {
             id: 2,
             icon: "figma",
             title: "Web Designing",
-            description: "Proficient in Creating UI/UX designs and wireframes using Figma and other technologies."
+            description: "Designing intuitive and visually stunning user interfaces (UI/UX) using Figma. turning concepts into polished, developer-ready designs."
         },
         {
             id: 3,
-            icon: "server",
-            title: "Backend Development",
-            description: "Developing robust server-side applications using Node.js and Express.js. Proficient in database interactions (SQL) and API development."
+            icon: "cpu",
+            title: "AI Productivity Tools",
+            description: "Integrating AI-powered tools and workflows to enhance productivity and automate repetetive tasks. Leveraging LLMs for smarter solutions."
         },
         {
             id: 4,
-            icon: "database",
-            title: "Database",
-            description: "Designing and managing efficient SQL databases to store and retrieve data. Skilled in data modeling and optimization techniques."
+            icon: "terminal",
+            title: "Prompt Engineering (LLM)",
+            description: "Crafting precise and effective prompts to unlock the full potential of Large Language Models (LLMs) like GPT-4, Claude, and Gemini for diverse applications."
         },
         {
             id: 5,
-            icon: "file-text",
-            title: "Power BI",
-            description: "Transforming raw data into insightful visualizations using Power BI. Experienced in creating interactive dashboards and reports."
-        },
-        {
-            id: 6,
-            icon: "layout",
-            title: "WordPress",
-            description: "Building and customizing dynamic websites and blogs using WordPress. Skilled in theme and plugin development."
+            icon: "zap",
+            title: "Generative AI",
+            description: "Exploring and implementing Generative AI solutions for content creation, image generation, and personalized user experiences."
         }
     ],
 
     projects: [
         {
             id: 1,
+            title: "Vivitaz Healthcare",
+            category: "Freelance Web Application",
+            image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770973181/Screenshot_2026-02-13_142555_zho4vv.png",
+            link: "https://vivitaz.com/"
+        },
+        {
+            id: 2,
             title: "Hetu Pathways - Educational Consultancy Website",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964302/portfolio/Screenshot_2025-12-16_120724_de5xnw.png",
             link: "#"
         },
         {
-            id: 2,
+            id: 3,
             title: "The Magictouch - Bhavani Akurathi Bridal Makeup Artist",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964303/portfolio/Screenshot_2025-12-16_115954_syld3j.png",
             link: "#"
         },
         {
-            id: 3,
+            id: 4,
             title: "Guggila Global Education - Study Abroad Consultancy",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964303/portfolio/Screenshot_2025-12-16_120347_ocrafa.png",
             link: "#"
         },
         {
-            id: 4,
+            id: 5,
             title: "The Tasty Den (commercially active website by a restaurant)",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453742/portfolio/Screenshot_2025-04-12_155848_hxsefg.png",
             link: "https://tasty-den-site.vercel.app/"
         },
         {
-            id: 5,
+            id: 6,
             title: "Zentry-Inspired Website",
             category: "Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453636/portfolio/Screenshot_537_h3p9ec.png",
             link: "https://awwwards-website-kappa.vercel.app/"
         },
         {
-            id: 6,
+            id: 7,
             title: "Movie Hub - A favourite place for fetching movies",
             category: "Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453666/portfolio/Screenshot_538_nwhaef.png",
             link: "https://movie-hub-drab.vercel.app/"
         },
         {
-            id: 7,
+            id: 8,
             title: "Classic Chicken Shack",
             category: "Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453775/portfolio/Screenshot_541_slfcty.png",
             link: "https://chicken-shack.vercel.app/"
         },
         {
-            id: 8,
+            id: 9,
             title: "Futura - A futuristic themed website",
             category: "Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453700/portfolio/Screenshot_539_nhgxf4.png",
             link: "https://project-futura.vercel.app/"
-        },
-        {
-            id: 9,
-            title: "Music App design(Accenture North America - Product Design Job Simulation)",
-            category: "Figma design",
-            image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744453910/portfolio/Screenshot_2025-04-12_160138_cod2gd.png",
-            link: "https://www.figma.com/design/fwEqQAhFYo2SGrmopjx3JY/Music-App-Start?node-id=104-703&t=Ay6UfTgYbq2Sk4vH-1"
         }
     ],
 
@@ -134,11 +134,11 @@ export const portfolioData = {
             { name: "Tailwind CSS", level: 90 }
         ],
         other: [
-            { name: "NODE.JS", level: 85 },
             { name: "SQL", level: 80 },
-            { name: "PYTHON", level: 80 },
+            { name: "PYTHON", level: 85 },
             { name: "UI/UX", level: 85 },
-            { name: "GSAP", level: 60 }
+            { name: "PROMPT ENG", level: 90 },
+            { name: "GEN AI", level: 85 }
         ]
     },
 

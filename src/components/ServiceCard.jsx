@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { fadeInUp } from '../utils/animations';
-import { FiMonitor, FiFigma, FiServer, FiDatabase, FiFileText, FiLayout } from 'react-icons/fi';
+import { FiMonitor, FiFigma, FiServer, FiDatabase, FiFileText, FiLayout, FiCpu, FiTerminal, FiZap, FiGlobe } from 'react-icons/fi';
 
 const iconMap = {
     monitor: <FiMonitor className="w-10 h-10" />,
@@ -9,6 +9,10 @@ const iconMap = {
     database: <FiDatabase className="w-10 h-10" />,
     'file-text': <FiFileText className="w-10 h-10" />,
     layout: <FiLayout className="w-10 h-10" />,
+    cpu: <FiCpu className="w-10 h-10" />,
+    terminal: <FiTerminal className="w-10 h-10" />,
+    zap: <FiZap className="w-10 h-10" />,
+    globe: <FiGlobe className="w-10 h-10" />,
 };
 
 const ServiceCard = ({ service }) => {

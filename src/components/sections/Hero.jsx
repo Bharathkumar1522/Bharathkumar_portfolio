@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
 import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
-import { FaLinkedinIn, FaInstagram, FaGithub, FaReact, FaNodeJs, FaFigma } from 'react-icons/fa';
+import { FaLinkedinIn, FaInstagram, FaGithub, FaReact, FaNodeJs, FaFigma, FaPython } from 'react-icons/fa';
 
 const iconMap = {
     linkedin: <FaLinkedinIn />,
@@ -11,6 +11,7 @@ const iconMap = {
     react: <FaReact />,
     node: <FaNodeJs />,
     figma: <FaFigma />,
+    python: <FaPython />,
 };
 
 const Hero = () => {
