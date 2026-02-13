@@ -5,7 +5,7 @@ export const portfolioData = {
         tagline: "Welcome to my world",
         description: "Passionate Frontend Developer specializing in building responsive, user-centric web applications with modern technologies. Proficient in ReactJS, Tailwind CSS, and Framer Motion with hands-on freelancing experience delivering production-ready websites. Strong foundation in UI/UX design using Figma, with additional programming skills in Python for problem-solving and automation. Eager to contribute innovative solutions and continuously learn emerging technologies in a dynamic development environment.",
         image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1744439708/portfolio/PhotoRoom-20250412_120405_kldupz.png",
-        resumeUrl: "https://drive.google.com/uc?export=download&id=1XfPgn1msM1WzAQOIJG6Dyi0Wfthi8WFH",
+        resumeUrl: "/My_resume_2026.pdf",
         email: "bk152002@gmail.com",
         phone: "+919963085174",
         social: {
