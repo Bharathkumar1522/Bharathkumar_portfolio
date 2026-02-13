@@ -65,7 +65,7 @@
   }
 
   .dark .card {
-    @apply bg-dark-card shadow-dark-card;
+    @apply bg-dark-card shadow-dark-neumorphism;
   }
 
   .card:hover {
@@ -73,7 +73,7 @@
   }
 
   .dark .card:hover {
-    @apply shadow-dark-neumorphism;
+    @apply shadow-dark-card transform -translate-y-[8px] border border-primary/20;
   }
 }
 

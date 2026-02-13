@@ -137,7 +137,7 @@ const Contact = () => {
                                         className="block"
                                     >
                                         <motion.div
-                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 transition-all duration-300 hover:text-primary dark:hover:text-primary bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-soft dark:shadow-dark-neumorphism"
+                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 transition-all duration-300 hover:text-primary dark:hover:text-primary bg-[#e8ecf1] dark:bg-gray-800 shadow-neumorphism-soft dark:shadow-dark-neumorphism"
                                             whileHover="hover"
                                         >
                                             <motion.svg
@@ -157,7 +157,7 @@ const Contact = () => {
                                         className="block"
                                     >
                                         <motion.div
-                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 transition-all duration-300 hover:text-primary dark:hover:text-primary bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-soft dark:shadow-dark-neumorphism"
+                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 transition-all duration-300 hover:text-primary dark:hover:text-primary bg-[#e8ecf1] dark:bg-gray-800 shadow-neumorphism-soft dark:shadow-dark-neumorphism"
                                             whileHover="hover"
                                         >
                                             <motion.svg

@@ -71,7 +71,7 @@ const ResumeCard = ({ item, type }) => {
                 <div className="mt-6 space-y-4">
                     <h5 className="text-gray-800 dark:text-gray-200 font-bold text-sm uppercase tracking-wider">Freelance Projects</h5>
                     {item.projects.map((project, i) => (
-                        <div key={i} className="p-4 rounded-xl bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-inset dark:shadow-dark-neumorphism-inset">
+                        <div key={i} className="p-4 rounded-xl bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-inset dark:shadow-dark-card">
                             <div className="flex justify-between items-start">
                                 <h6 className="text-gray-900 dark:text-gray-100 font-bold">{project.name}</h6>
                                 <span className="text-primary text-xs font-semibold whitespace-nowrap ml-2">{project.period}</span>

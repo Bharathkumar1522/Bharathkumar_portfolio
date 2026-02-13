@@ -11,7 +11,7 @@ export const portfolioData = {
         social: {
             linkedin: "https://www.linkedin.com/in/bharath-kumar-sagi/",
             github: "https://github.com/Bharathkumar1522",
-            instagram: "https://www.instagram.com/devil_105002?igsh=OGQ5ZDc2ODk2ZA=="
+            instagram: "https://www.instagram.com/webcraft_by_bharath"
         },
         bestSkillOn: [
             { icon: "react", name: "ReactJS" },
@@ -72,21 +72,21 @@ export const portfolioData = {
             title: "Hetu Pathways - Educational Consultancy Website",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964302/portfolio/Screenshot_2025-12-16_120724_de5xnw.png",
-            link: "#"
+            link: "https://www.hetupathways.com/"
         },
         {
             id: 3,
             title: "The Magictouch - Bhavani Akurathi Bridal Makeup Artist",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964303/portfolio/Screenshot_2025-12-16_115954_syld3j.png",
-            link: "#"
+            link: "https://themagictouchbybhavani.netlify.app/"
         },
         {
             id: 4,
             title: "Guggila Global Education - Study Abroad Consultancy",
             category: "Freelance Web Application",
             image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1770964303/portfolio/Screenshot_2025-12-16_120347_ocrafa.png",
-            link: "#"
+            link: "https://guggillaglobaledu.org/"
         },
         {
             id: 5,
