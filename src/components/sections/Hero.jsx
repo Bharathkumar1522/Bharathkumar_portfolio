@@ -106,6 +106,9 @@ const Hero = () => {
                         <motion.a
                             variants={fadeInUp}
                             href={personal.resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download="Bharath_Kumar_Resume.pdf"
                             className="btn-primary inline-flex items-center gap-2"
                             whileHover="hover"
                             whileTap="tap"
