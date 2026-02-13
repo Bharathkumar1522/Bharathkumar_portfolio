@@ -11,9 +11,9 @@ const MobileMenu = ({ navItems, onNavClick, onClose }) => {
             exit="exit"
             className="fixed inset-0 z-40 lg:hidden"
         >
-            <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
 
-            <motion.div className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl">
+            <motion.div className="absolute right-0 top-0 bottom-0 w-[280px] bg-[#e8ecf1] dark:bg-dark-bg shadow-2xl">
                 <div className="flex flex-col h-full p-8 pt-24">
                     {/* Navigation Links */}
                     <nav className="flex-1">
@@ -32,7 +32,7 @@ const MobileMenu = ({ navItems, onNavClick, onClose }) => {
                                     <a
                                         href={item.href}
                                         onClick={(e) => onNavClick(e, item.href)}
-                                        className="text-xl font-medium text-gray-700 hover:text-primary transition-colors block"
+                                        className="text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors block font-heading"
                                     >
                                         {item.name}
                                     </a>
@@ -46,9 +46,9 @@ const MobileMenu = ({ navItems, onNavClick, onClose }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
-                        className="border-t border-gray-200 pt-6"
+                        className="border-t border-gray-300 dark:border-gray-700 pt-6"
                     >
-                        <p className="text-sm font-semibold text-gray-500 mb-4 uppercase">
+                        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider font-heading">
                             Find With Me
                         </p>
                         <div className="flex gap-4">
@@ -56,7 +56,7 @@ const MobileMenu = ({ navItems, onNavClick, onClose }) => {
                                 href={portfolioData.personal.social.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-12 h-12 rounded-lg bg-gray-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300"
+                                className="w-12 h-12 rounded-lg bg-gray-200 dark:bg-dark-card text-gray-700 dark:text-gray-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white flex items-center justify-center transition-all duration-300 shadow-neumorphism-soft dark:shadow-dark-neumorphism"
                                 aria-label="LinkedIn profile"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ const MobileMenu = ({ navItems, onNavClick, onClose }) => {
                                 href={portfolioData.personal.social.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-12 h-12 rounded-lg bg-gray-100 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300"
+                                className="w-12 h-12 rounded-lg bg-gray-200 dark:bg-dark-card text-gray-700 dark:text-gray-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white flex items-center justify-center transition-all duration-300 shadow-neumorphism-soft dark:shadow-dark-neumorphism"
                                 aria-label="Instagram profile"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
