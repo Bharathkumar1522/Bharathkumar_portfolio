@@ -60,10 +60,39 @@ const Header = () => {
                         <motion.a
                             href="#home"
                             onClick={(e) => handleNavClick(e, '#home')}
-                            className="text-2xl font-bold font-heading text-gray-900 dark:text-gray-100"
+                            className="group flex items-center gap-0 select-none"
                             whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.97 }}
                         >
-                            BHARATH
+                            {/* Opening bracket */}
+                            <motion.span
+                                className="text-primary font-mono text-xl sm:text-2xl font-light opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{ marginRight: '2px' }}
+                            >
+                                &lt;
+                            </motion.span>
+
+                            {/* Main name */}
+                            <span
+                                className="font-heading font-extrabold text-xl sm:text-2xl tracking-tight gradient-text-animated"
+                            >
+                                Bharath
+                            </span>
+
+                            {/* Closing bracket with slash */}
+                            <motion.span
+                                className="text-primary font-mono text-xl sm:text-2xl font-light opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{ marginLeft: '2px' }}
+                            >
+                                /&gt;
+                            </motion.span>
+
+                            {/* Blinking cursor dot on hover */}
+                            <motion.span
+                                className="inline-block w-[3px] h-5 bg-primary rounded-full opacity-0 group-hover:opacity-100 ml-1"
+                                animate={{ opacity: [0, 1, 0] }}
+                                transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
+                            />
                         </motion.a>
 
                         {/* Desktop Navigation */}

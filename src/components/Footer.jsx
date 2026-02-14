@@ -59,7 +59,7 @@ const Footer = () => {
                         >
                             <FaRobot />
                         </motion.span>
-                        <span>by Bharath Kumar</span>
+                        <span>by <span className="gradient-text-animated font-bold">Bharath Kumar</span></span>
                     </div>
                 </div>
             </div>

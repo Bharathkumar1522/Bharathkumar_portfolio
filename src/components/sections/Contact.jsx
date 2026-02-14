@@ -4,6 +4,7 @@ import { FaHandshake } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { portfolioData } from '../../data/portfolioData';
 import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
+import TextureOverlay, { GradientGlow } from '../TextureOverlay';
 
 const Contact = () => {
     const formRef = useRef();
@@ -54,8 +55,11 @@ const Contact = () => {
     const { personal } = portfolioData;
 
     return (
-        <section id="contacts" className="section-padding">
-            <div className="container-custom">
+        <section id="contacts" className="section-padding relative overflow-hidden section-divider">
+            <TextureOverlay type="dots" />
+            <GradientGlow position="bottom-right" color="primary" size="lg" />
+            <GradientGlow position="top-left" color="secondary" size="sm" />
+            <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

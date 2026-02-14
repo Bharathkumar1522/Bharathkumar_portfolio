@@ -3,6 +3,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
 import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
 import { FaLinkedinIn, FaInstagram, FaGithub, FaReact, FaNodeJs, FaFigma, FaPython } from 'react-icons/fa';
+import TextureOverlay, { GradientGlow } from '../TextureOverlay';
 
 const iconMap = {
     linkedin: <FaLinkedinIn />,
@@ -58,8 +59,11 @@ const Hero = () => {
     }, [charIndex, isDeleting, roleIndex, personal.role]);
 
     return (
-        <section id="home" className="min-h-screen flex items-center pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-10 sm:pb-16">
-            <div className="w-full px-4 sm:px-6 lg:px-24">
+        <section id="home" className="min-h-screen flex items-center pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-10 sm:pb-16 relative overflow-hidden section-divider">
+            <TextureOverlay type="dots" />
+            <GradientGlow position="top-right" color="primary" size="lg" />
+            <GradientGlow position="bottom-left" color="secondary" size="md" />
+            <div className="w-full px-4 sm:px-6 lg:px-24 relative z-10">
                 <div ref={containerRef} className="grid lg:grid-cols-[60%_40%] gap-8 lg:gap-10 items-center">
                     {/* Left Content */}
                     <motion.div

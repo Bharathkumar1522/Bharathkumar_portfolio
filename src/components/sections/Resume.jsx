@@ -4,6 +4,7 @@ import { portfolioData } from '../../data/portfolioData';
 import { fadeInUp } from '../../utils/animations';
 import ProgressBar from '../ProgressBar';
 import ResumeCard from '../ResumeCard';
+import TextureOverlay, { GradientGlow } from '../TextureOverlay';
 
 const Resume = () => {
     const [activeTab, setActiveTab] = useState('education');
@@ -18,8 +19,10 @@ const Resume = () => {
     ];
 
     return (
-        <section id="resume" className="section-padding">
-            <div className="container-custom">
+        <section id="resume" className="section-padding relative overflow-hidden section-divider">
+            <TextureOverlay type="noise" />
+            <GradientGlow position="top-left" color="secondary" size="md" />
+            <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

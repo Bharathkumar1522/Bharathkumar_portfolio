@@ -3,14 +3,17 @@ import { useRef } from 'react';
 import { portfolioData } from '../../data/portfolioData';
 import { staggerContainer } from '../../utils/animations';
 import ProjectCard from '../ProjectCard';
+import TextureOverlay, { GradientGlow } from '../TextureOverlay';
 
 const Portfolio = () => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
     return (
-        <section id="portfolio" className="section-padding">
-            <div className="container-custom">
+        <section id="portfolio" className="section-padding relative overflow-hidden section-divider">
+            <TextureOverlay type="dots" />
+            <GradientGlow position="bottom-left" color="primary" size="md" />
+            <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

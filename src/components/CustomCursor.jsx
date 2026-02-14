@@ -32,6 +32,12 @@ const CustomCursor = () => {
 
         const onMouseMove = (e) => {
             mousePos.current = { x: e.clientX, y: e.clientY };
+            // Hide custom cursor when hovering over scrollbar (right edge)
+            if (e.clientX > window.innerWidth - 20) {
+                canvas.style.opacity = '0';
+            } else {
+                canvas.style.opacity = '1';
+            }
         };
         const onMouseDown = () => {
             isClicking.current = true;
