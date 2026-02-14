@@ -1,8 +1,10 @@
-import { useEffect, Suspense, lazy } from 'react';
+import { useEffect, useState, useCallback, Suspense, lazy } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useLenis } from './hooks/useLenis';
 import Layout from './components/Layout';
 import Hero from './components/sections/Hero';
 import BackToTop from './components/BackToTop';
+import LoadingScreen from './components/LoadingScreen';
 
 // Lazy load non-critical sections
 const Features = lazy(() => import('./components/sections/Features'));
@@ -18,6 +20,11 @@ const PageLoader = () => (
 );
 
 function App() {
+  const [isLoading, setIsLoading] = useState(() => {
+    // Only show loading screen once per session
+    return !sessionStorage.getItem('hasLoaded');
+  });
+
   // Initialize Lenis smooth scroll
   useLenis();
 
@@ -29,18 +36,40 @@ function App() {
     }
   }, []);
 
+  const handleLoadingComplete = useCallback(() => {
+    setIsLoading(false);
+    sessionStorage.setItem('hasLoaded', 'true');
+  }, []);
+
   return (
-    <Layout>
-      <Hero />
-      <Suspense fallback={<PageLoader />}>
-        <Features />
-        <Portfolio />
-        <Resume />
-        <Contact />
-      </Suspense>
-      <BackToTop />
-    </Layout>
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <LoadingScreen key="loader" onComplete={handleLoadingComplete} />
+        )}
+      </AnimatePresence>
+
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <Layout>
+            <Hero />
+            <Suspense fallback={<PageLoader />}>
+              <Features />
+              <Portfolio />
+              <Resume />
+              <Contact />
+            </Suspense>
+            <BackToTop />
+          </Layout>
+        </motion.div>
+      )}
+    </>
   );
 }
 
 export default App;
+

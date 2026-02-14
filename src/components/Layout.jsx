@@ -1,9 +1,11 @@
 import Header from './Header';
 import Footer from './Footer';
+import CustomCursor from './CustomCursor';
 
 const Layout = ({ children }) => {
     return (
         <div className="min-h-screen w-full overflow-x-hidden">
+            <CustomCursor />
             <Header />
             <main>
                 {children}
@@ -14,3 +16,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
