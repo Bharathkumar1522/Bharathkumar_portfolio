@@ -122,20 +122,37 @@ const Contact = () => {
                             </motion.div>
                             {submitStatus.message && (
                                 <motion.div 
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className={`p-4 sm:p-5 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 shadow-lg border backdrop-blur-sm ${
-                                        submitStatus.type === 'success' 
-                                            ? 'bg-green-500/10 border-green-500/20 text-green-700 dark:text-green-400' 
-                                            : 'bg-red-500/10 border-red-500/20 text-red-700 dark:text-red-400'
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                                    className={`relative overflow-hidden rounded-[19px] p-5 sm:p-6 ${
+                                        submitStatus.type === 'success'
+                                            ? 'bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-soft dark:shadow-dark-neumorphism'
+                                            : 'bg-[#e8ecf1] dark:bg-dark-card shadow-neumorphism-soft dark:shadow-dark-neumorphism'
                                     }`}
                                 >
-                                    {submitStatus.type === 'success' ? (
-                                        <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    ) : (
-                                        <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    )}
-                                    {submitStatus.message}
+                                    <div className={`absolute top-0 left-0 h-full w-1 ${submitStatus.type === 'success' ? 'bg-gradient-to-b from-green-400 to-emerald-600' : 'bg-gradient-to-b from-red-400 to-rose-600'}`} />
+                                    <div className="flex items-start gap-4 pl-3">
+                                        <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                                            submitStatus.type === 'success' 
+                                                ? 'bg-gradient-to-br from-green-400 to-emerald-600' 
+                                                : 'bg-gradient-to-br from-red-400 to-rose-600'
+                                        }`}>
+                                            {submitStatus.type === 'success' ? (
+                                                <motion.svg initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></motion.svg>
+                                            ) : (
+                                                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <p className={`font-bold text-sm sm:text-base ${submitStatus.type === 'success' ? 'text-gray-900 dark:text-gray-100' : 'text-gray-900 dark:text-gray-100'}`}>
+                                                {submitStatus.type === 'success' ? 'Message Delivered!' : 'Something went wrong'}
+                                            </p>
+                                            <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1">
+                                                {submitStatus.message}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </motion.div>
                             )}
                             <motion.button type="submit" disabled={isSubmitting} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto items-center gap-2" whileHover="hover" whileTap="tap">
