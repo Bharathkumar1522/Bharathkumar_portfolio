@@ -35,11 +35,11 @@ const Contact = () => {
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
             );
 
-            setSubmitStatus({ type: 'success', message: '✅ Message sent successfully!' });
+            setSubmitStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
             formRef.current.reset();
         } catch (error) {
             console.error('EmailJS Error:', error);
-            setSubmitStatus({ type: 'error', message: '❌ Failed to send message. Please try again.' });
+            setSubmitStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
         } finally {
             setIsSubmitting(false);
         }
@@ -121,7 +121,22 @@ const Contact = () => {
                                 <textarea id="message" name="message" rows="5" required className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-[15px] sm:rounded-[19px] bg-[#e8ecf1] dark:bg-dark-bg shadow-neumorphism-inset dark:shadow-dark-neumorphism-inset focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none text-gray-700 dark:text-gray-300 text-sm sm:text-base border-none" />
                             </motion.div>
                             {submitStatus.message && (
-                                <div className={`p-3 sm:p-4 rounded-lg text-sm ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>{submitStatus.message}</div>
+                                <motion.div 
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className={`p-4 sm:p-5 rounded-xl text-sm sm:text-base font-medium flex items-center gap-3 shadow-lg border backdrop-blur-sm ${
+                                        submitStatus.type === 'success' 
+                                            ? 'bg-green-500/10 border-green-500/20 text-green-700 dark:text-green-400' 
+                                            : 'bg-red-500/10 border-red-500/20 text-red-700 dark:text-red-400'
+                                    }`}
+                                >
+                                    {submitStatus.type === 'success' ? (
+                                        <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    ) : (
+                                        <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    )}
+                                    {submitStatus.message}
+                                </motion.div>
                             )}
                             <motion.button type="submit" disabled={isSubmitting} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto items-center gap-2" whileHover="hover" whileTap="tap">
                                 {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
