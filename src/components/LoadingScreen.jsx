@@ -1,22 +1,23 @@
-import { useState, useEffect, useRef } from 'react';
+'use client';
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LoadingScreen = ({ onComplete }) => {
-    const [isDark] = useState(() => {
-        return localStorage.getItem('theme') === 'dark';
-    });
     const [text, setText] = useState('');
     const [showSubtitle, setShowSubtitle] = useState(false);
     const [progress, setProgress] = useState(0);
     const [isExiting, setIsExiting] = useState(false);
     const fullText = '< Bharath Kumar />';
     const canvasRef = useRef(null);
+    const stableOnComplete = useCallback(onComplete, [onComplete]);
 
     // Particle grid background
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
+        const isDark = document.documentElement.classList.contains('dark');
         let animId;
         let particles = [];
 
@@ -27,8 +28,9 @@ const LoadingScreen = ({ onComplete }) => {
         resize();
         window.addEventListener('resize', resize);
 
-        // Create particles
-        for (let i = 0; i < 60; i++) {
+        // Create particles — fewer for performance
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
+        for (let i = 0; i < particleCount; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
@@ -73,15 +75,15 @@ const LoadingScreen = ({ onComplete }) => {
                 if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
             });
 
-            // Draw connections
+            // Draw connections — reduced threshold for perf
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
+                    if (dist < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = isDark ? `rgba(255, 1, 79, ${0.06 * (1 - dist / 120)})` : `rgba(255, 1, 79, ${0.1 * (1 - dist / 120)})`;
+                        ctx.strokeStyle = isDark ? `rgba(255, 1, 79, ${0.06 * (1 - dist / 100)})` : `rgba(255, 1, 79, ${0.1 * (1 - dist / 100)})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -109,103 +111,99 @@ const LoadingScreen = ({ onComplete }) => {
                 i++;
             } else {
                 clearInterval(interval);
-                setTimeout(() => setShowSubtitle(true), 300);
+                setTimeout(() => setShowSubtitle(true), 50);
             }
-        }, 80);
+        }, 20); // Much faster typing
 
         return () => clearInterval(interval);
-    }, []);
+    }, [fullText]);
 
     // Progress bar
     useEffect(() => {
-        const duration = 3000;
+        // Very fast duration to ensure LCP is hit quickly
+        const duration = 250; 
         const start = Date.now();
+        
         const tick = () => {
             const elapsed = Date.now() - start;
             const pct = Math.min((elapsed / duration) * 100, 100);
+            
             setProgress(pct);
+            
             if (pct < 100) {
                 requestAnimationFrame(tick);
             } else {
                 setTimeout(() => {
                     setIsExiting(true);
-                    setTimeout(() => onComplete(), 800);
-                }, 200);
+                    setTimeout(() => stableOnComplete(), 300); // Wait for exit animation
+                }, 50);
             }
         };
+        
         requestAnimationFrame(tick);
-    }, [onComplete]);
+    }, [stableOnComplete]);
 
     return (
         <AnimatePresence>
             {!isExiting ? (
                 <motion.div
-                    className={`loading-screen ${isDark ? 'loading-screen--dark' : 'loading-screen--light'}`}
+                    className="loading-screen"
                     exit={{ y: '-100%', opacity: 0 }}
-                    transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                    transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
                 >
                     <canvas ref={canvasRef} className="loading-particles" />
-
-                    {/* Corner accents */}
                     <div className="loading-corner loading-corner--tl" />
                     <div className="loading-corner loading-corner--br" />
-
-                    {/* Center content */}
                     <div className="loading-content">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            transition={{ duration: 0.3 }}
                             className="loading-name-wrapper"
                         >
-                            <span className="loading-name">
-                                {text}
-                                <span className="loading-cursor">|</span>
+                            <span className="loading-name font-heading">
+                                {text}<span className="loading-cursor">|</span>
                             </span>
                         </motion.div>
-
                         <AnimatePresence>
                             {showSubtitle && (
                                 <motion.p
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="loading-subtitle"
+                                    transition={{ duration: 0.2 }}
+                                    className="loading-subtitle font-sans"
                                 >
                                     Frontend Developer &bull; UI/UX Designer
                                 </motion.p>
                             )}
                         </AnimatePresence>
                     </div>
-
-                    {/* Bottom progress bar */}
                     <div className="loading-progress-track">
                         <motion.div
                             className="loading-progress-bar"
                             style={{ width: `${progress}%` }}
                         />
-                        <span className="loading-progress-text">
+                        <span className="loading-progress-text font-heading">
                             {Math.round(progress)}%
                         </span>
                     </div>
                 </motion.div>
             ) : (
                 <motion.div
-                    className={`loading-screen ${isDark ? 'loading-screen--dark' : 'loading-screen--light'}`}
+                    className="loading-screen"
                     initial={{ y: 0, opacity: 1 }}
                     animate={{ y: '-100%', opacity: 0 }}
-                    transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                    transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
                 >
                     <canvas ref={canvasRef} className="loading-particles" />
                     <div className="loading-content">
                         <div className="loading-name-wrapper">
-                            <span className="loading-name">
-                                {text}
-                                <span className="loading-cursor">|</span>
+                            <span className="loading-name font-heading">
+                                {text}<span className="loading-cursor">|</span>
                             </span>
                         </div>
                         {showSubtitle && (
-                            <p className="loading-subtitle">
+                            <p className="loading-subtitle font-sans">
                                 Frontend Developer &bull; UI/UX Designer
                             </p>
                         )}

@@ -1,6 +1,9 @@
+'use client';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../utils/animations';
+import Image from 'next/image';
+import { fadeInUp } from '@/utils/animations';
 
 const ProjectCard = ({ project }) => {
     const [imageError, setImageError] = useState(false);
@@ -24,17 +27,24 @@ const ProjectCard = ({ project }) => {
                 {/* Project Image */}
                 <div className="relative overflow-hidden aspect-video">
                     {!imageError ? (
-                        <motion.img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                            decoding="async"
+                        <motion.div
+                            className="w-full h-full"
                             variants={{
                                 hover: { scale: 1.1, transition: { duration: 0.4 } }
                             }}
-                            onError={() => setImageError(true)}
-                        />
+                        >
+                            <Image
+                                src={project.image}
+                                alt={project.title}
+                                width={640}
+                                height={360}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                quality={75}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                onError={() => setImageError(true)}
+                            />
+                        </motion.div>
                     ) : (
                         <div
                             className="w-full h-full flex items-center justify-center p-6"

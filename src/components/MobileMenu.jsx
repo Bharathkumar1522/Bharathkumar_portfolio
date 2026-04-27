@@ -1,6 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { portfolioData } from '../data/portfolioData';
-import { menuSlide, navItem } from '../utils/animations';
+import { portfolioData } from '@/data/portfolioData';
+import { menuSlide, navItem } from '@/utils/animations';
 
 const MobileMenu = ({ navItems, onNavClick, onClose }) => {
     return (

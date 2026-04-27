@@ -1,9 +1,11 @@
+'use client';
+
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { portfolioData } from '../../data/portfolioData';
-import { staggerContainer } from '../../utils/animations';
-import ProjectCard from '../ProjectCard';
-import TextureOverlay, { GradientGlow } from '../TextureOverlay';
+import { portfolioData } from '@/data/portfolioData';
+import { staggerContainer } from '@/utils/animations';
+import ProjectCard from '@/components/ProjectCard';
+import TextureOverlay, { GradientGlow } from '@/components/TextureOverlay';
 
 const Portfolio = () => {
     const containerRef = useRef(null);
@@ -38,7 +40,7 @@ const Portfolio = () => {
                     animate={isInView ? 'animate' : 'initial'}
                     className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
                 >
-                    {portfolioData.projects.map((project, index) => (
+                    {portfolioData.projects.map((project) => (
                         <ProjectCard key={project.id} project={project} />
                     ))}
                 </motion.div>

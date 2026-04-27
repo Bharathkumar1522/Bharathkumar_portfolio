@@ -1,5 +1,7 @@
+'use client';
+
 import { LogoCloud } from './ui/logo-cloud';
-import { cn } from '../lib/utils';
+import { cn } from '@/lib/utils';
 import { SiReact, SiPython, SiFigma, SiTailwindcss, SiVercel, SiGithub, SiOpenai, SiGoogle } from 'react-icons/si';
 import { FaHeart, FaRobot } from 'react-icons/fa';
 import { motion } from 'framer-motion';

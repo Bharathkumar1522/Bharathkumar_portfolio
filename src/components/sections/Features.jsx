@@ -1,9 +1,11 @@
+'use client';
+
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { portfolioData } from '../../data/portfolioData';
-import { staggerContainer } from '../../utils/animations';
-import ServiceCard from '../ServiceCard';
-import TextureOverlay, { GradientGlow } from '../TextureOverlay';
+import { portfolioData } from '@/data/portfolioData';
+import { staggerContainer } from '@/utils/animations';
+import ServiceCard from '@/components/ServiceCard';
+import TextureOverlay, { GradientGlow } from '@/components/TextureOverlay';
 
 const Features = () => {
     const containerRef = useRef(null);
@@ -38,8 +40,8 @@ const Features = () => {
                     animate={isInView ? 'animate' : 'initial'}
                     className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
                 >
-                    {portfolioData.services.map((service, index) => (
-                        <ServiceCard key={service.id} service={service} index={index} />
+                    {portfolioData.services.map((service) => (
+                        <ServiceCard key={service.id} service={service} />
                     ))}
                 </motion.div>
             </div>

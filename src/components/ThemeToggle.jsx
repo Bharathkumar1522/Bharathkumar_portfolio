@@ -1,5 +1,7 @@
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@/context/ThemeContext';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ThemeToggle = () => {

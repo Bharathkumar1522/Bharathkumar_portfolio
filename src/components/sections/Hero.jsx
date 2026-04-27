@@ -1,9 +1,12 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import { portfolioData } from '../../data/portfolioData';
-import { fadeInUp, slideInLeft, slideInRight } from '../../utils/animations';
+import Image from 'next/image';
+import { portfolioData } from '@/data/portfolioData';
+import { fadeInUp, slideInLeft, slideInRight } from '@/utils/animations';
 import { FaLinkedinIn, FaInstagram, FaGithub, FaReact, FaNodeJs, FaFigma, FaPython } from 'react-icons/fa';
-import TextureOverlay, { GradientGlow } from '../TextureOverlay';
+import TextureOverlay, { GradientGlow } from '@/components/TextureOverlay';
 
 const iconMap = {
     linkedin: <FaLinkedinIn />,
@@ -31,7 +34,6 @@ const Hero = () => {
         }
     }, [isInView, controls]);
 
-    // Typewriter effect
     // Typewriter effect
     useEffect(() => {
         if (!personal.role || personal.role.length === 0) return;
@@ -91,7 +93,7 @@ const Hero = () => {
                             style={{ lineHeight: '1.4' }}
                         >
                             <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px]">
-                                Hi, I'm <span className="gradient-text">{personal.name}</span>
+                                Hi, I&apos;m <span className="gradient-text">{personal.name}</span>
                             </span>
                             <motion.span
                                 className="block mt-3 sm:mt-4 lg:mt-6 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[52px] text-[#1a1a2e] dark:text-gray-100"
@@ -108,32 +110,50 @@ const Hero = () => {
                             {personal.description}
                         </motion.p>
 
-                        <motion.a
+                        <motion.div 
                             variants={fadeInUp}
-                            href={personal.resumeUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            download="Bharath_Kumar_Resume.pdf"
-                            className="btn-primary inline-flex items-center gap-2"
-                            whileHover="hover"
-                            whileTap="tap"
+                            className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8 sm:mb-10 lg:mb-12"
                         >
-                            <motion.svg
-                                variants={{
-                                    hover: { y: [0, 2, 0], transition: { repeat: Infinity, duration: 0.8 } }
-                                }}
-                                className="w-4 h-4 sm:w-5 sm:h-5"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+                            <motion.a
+                                href={personal.resumeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                download="Bharath_Kumar_Resume.pdf"
+                                className="btn-primary inline-flex items-center gap-2"
+                                whileHover="hover"
+                                whileTap="tap"
                             >
-                                <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </motion.svg>
-                            Download Resume
-                        </motion.a>
+                                <motion.svg
+                                    variants={{
+                                        hover: { y: [0, 2, 0], transition: { repeat: Infinity, duration: 0.8 } }
+                                    }}
+                                    className="w-4 h-4 sm:w-5 sm:h-5"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </motion.svg>
+                                Download Resume
+                            </motion.a>
+
+                            <motion.a
+                                href="https://bharath-freelance-portfolio.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold shadow-[0_0_15px_rgba(255,1,79,0.1)] hover:shadow-[0_0_20px_rgba(255,1,79,0.3)]"
+                                whileHover={{ y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Freelance Portfolio
+                            </motion.a>
+                        </motion.div>
 
 
                         {/* Social and Skills */}
@@ -218,13 +238,16 @@ const Hero = () => {
                             <div className="absolute top-[5px] left-[5px] w-[calc(100%-10px)] h-[calc(100%-10px)] sm:top-[7.5px] sm:left-[7.5px] sm:w-[calc(100%-15px)] sm:h-[calc(100%-15px)] rounded-full overflow-hidden flex items-center justify-center" style={{
                                 background: 'linear-gradient(145deg, #1e2024, #23272b)'
                             }}>
-                                <img
-                                    src={personal.image}
+                                <Image
+                                    src="/profile.jpg"
                                     alt={personal.name}
+                                    width={420}
+                                    height={420}
                                     className="w-full h-full object-cover object-center"
                                     style={{ objectPosition: 'center 20%' }}
-                                    loading="eager"
-                                    fetchpriority="high"
+                                    priority
+                                    quality={80}
+                                    sizes="(max-width: 640px) 250px, (max-width: 768px) 300px, (max-width: 1024px) 350px, 420px"
                                 />
                             </div>
                         </div>

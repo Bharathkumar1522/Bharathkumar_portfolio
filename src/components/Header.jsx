@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { scrollTo } from '../hooks/useLenis';
+import { scrollTo } from '@/hooks/useLenis';
 import MobileMenu from './MobileMenu';
 import ThemeToggle from './ThemeToggle';
 

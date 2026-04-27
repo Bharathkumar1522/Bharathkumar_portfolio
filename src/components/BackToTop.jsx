@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { scrollTo } from '../hooks/useLenis';
+import { scrollTo } from '@/hooks/useLenis';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);

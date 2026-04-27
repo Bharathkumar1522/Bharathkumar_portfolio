@@ -61,6 +61,27 @@ export const portfolioData = {
 
     projects: [
         {
+            id: 12,
+            title: "Bharath Freelance Web Services",
+            category: "Freelance Portfolio / Agency",
+            image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1777267718/portfolio/Screenshot_2026-04-27_105725_mykjpa.png",
+            link: "https://bharath-freelance-portfolio.vercel.app/"
+        },
+        {
+            id: 11,
+            title: "HevaONE - B2B SaaS Landing Page",
+            category: "Freelance Web Application",
+            image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1777267426/portfolio/Screenshot_2026-04-27_105336_qq9tms.png",
+            link: "https://hevaone.netlify.app/"
+        },
+        {
+            id: 10,
+            title: "The SafeHive - Custom Web Application",
+            category: "Freelance Web Application (Upwork)",
+            image: "https://res.cloudinary.com/dyecmgvcy/image/upload/v1777267343/Screenshot_2026-04-27_105044_ybwd7a.png",
+            link: "https://www.thesafehive.com/"
+        },
+        {
             id: 1,
             title: "Vivitaz Healthcare",
             category: "Freelance Web Application",

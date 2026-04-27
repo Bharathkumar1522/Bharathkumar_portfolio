@@ -1,17 +1,11 @@
-import { cn } from '../../lib/utils';
+'use client';
+
+import { cn } from '@/lib/utils';
 import { useMotionValue, animate, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import useMeasure from 'react-use-measure';
 
-export function InfiniteSlider({
-    children,
-    gap = 16,
-    duration = 25,
-    durationOnHover,
-    direction = 'horizontal',
-    reverse = false,
-    className,
-}) {
+export function InfiniteSlider({ children, gap = 16, duration = 25, durationOnHover, direction = 'horizontal', reverse = false, className }) {
     const [currentDuration, setCurrentDuration] = useState(duration);
     const [ref, { width, height }] = useMeasure();
     const translation = useMotionValue(0);
@@ -28,66 +22,26 @@ export function InfiniteSlider({
         if (isTransitioning) {
             controls = animate(translation, [translation.get(), to], {
                 ease: 'linear',
-                duration:
-                    currentDuration * Math.abs((translation.get() - to) / contentSize),
-                onComplete: () => {
-                    setIsTransitioning(false);
-                    setKey((prevKey) => prevKey + 1);
-                },
+                duration: currentDuration * Math.abs((translation.get() - to) / contentSize),
+                onComplete: () => { setIsTransitioning(false); setKey((prev) => prev + 1); },
             });
         } else {
             controls = animate(translation, [from, to], {
-                ease: 'linear',
-                duration: currentDuration,
-                repeat: Infinity,
-                repeatType: 'loop',
-                repeatDelay: 0,
-                onRepeat: () => {
-                    translation.set(from);
-                },
+                ease: 'linear', duration: currentDuration, repeat: Infinity, repeatType: 'loop', repeatDelay: 0,
+                onRepeat: () => { translation.set(from); },
             });
         }
-
         return controls?.stop;
-    }, [
-        key,
-        translation,
-        currentDuration,
-        width,
-        height,
-        gap,
-        isTransitioning,
-        direction,
-        reverse,
-    ]);
+    }, [key, translation, currentDuration, width, height, gap, isTransitioning, direction, reverse]);
 
-    const hoverProps = durationOnHover
-        ? {
-            onHoverStart: () => {
-                setIsTransitioning(true);
-                setCurrentDuration(durationOnHover);
-            },
-            onHoverEnd: () => {
-                setIsTransitioning(true);
-                setCurrentDuration(duration);
-            },
-        }
-        : {};
+    const hoverProps = durationOnHover ? {
+        onHoverStart: () => { setIsTransitioning(true); setCurrentDuration(durationOnHover); },
+        onHoverEnd: () => { setIsTransitioning(true); setCurrentDuration(duration); },
+    } : {};
 
     return (
         <div className={cn('overflow-hidden', className)}>
-            <motion.div
-                className='flex w-max'
-                style={{
-                    ...(direction === 'horizontal'
-                        ? { x: translation }
-                        : { y: translation }),
-                    gap: `${gap}px`,
-                    flexDirection: direction === 'horizontal' ? 'row' : 'column',
-                }}
-                ref={ref}
-                {...hoverProps}
-            >
+            <motion.div className='flex w-max' style={{ ...(direction === 'horizontal' ? { x: translation } : { y: translation }), gap: `${gap}px`, flexDirection: direction === 'horizontal' ? 'row' : 'column' }} ref={ref} {...hoverProps}>
                 {children}
                 {children}
             </motion.div>
